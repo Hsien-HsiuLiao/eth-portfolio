@@ -26,6 +26,12 @@ export const menuLinks: HeaderMenuLink[] = [
     href: "/debug",
     icon: <BugAntIcon className="h-4 w-4" />,
   },
+
+    {
+    label: "Hsien-Hsiu's Portfolio Projects ->",
+    href: "/portfolio",
+    
+  },
 ];
 
 export const HeaderMenuLinks = () => {
