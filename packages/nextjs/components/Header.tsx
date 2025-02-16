@@ -30,7 +30,22 @@ export const menuLinks: HeaderMenuLink[] = [
     {
     label: "Hsien-Hsiu's Portfolio Projects ->",
     href: "/portfolio",
-    
+  },
+  {
+    label: "Multi-sig Wallet",
+    href: "/multisigwallet",
+  },
+  {
+    label: "NFT app",
+    href: "/nft",
+  },
+  {
+    label: "E-commerce",
+    href: "/ecomm",
+  },
+  {
+    label: "Musician dApp",
+    href: "/musician",
   },
 ];
 
