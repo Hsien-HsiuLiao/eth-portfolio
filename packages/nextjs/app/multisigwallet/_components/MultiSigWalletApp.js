@@ -82,9 +82,9 @@ function MultiSigWalletApp() {
 
   return (
     <div style={appStyle}>
-      <Header approvers={approvers} quorum={quorum} currentAccount={accounts}/>
-      <NewTransfer createTransfer={createTransfer} />
-      <TransferList transfers={transfers} approveTransfer={approveTransfer} />
+    {/*   <Header approvers={approvers} quorum={quorum} currentAccount={accounts}/> */}
+    {/*   <NewTransfer createTransfer={createTransfer} /> */}
+     {/*   <TransferList transfers={transfers} approveTransfer={approveTransfer} />  */}
     </div>
   );
 }
