@@ -17,11 +17,11 @@ const Home: NextPage = () => {
             <span className="block text-2xl mb-2">Welcome to</span>
             <span className="block text-4xl font-bold">Hsien-Hsiu&apos;s portfolio</span>
           </h1>
-          <div className="flex justify-center items-center space-x-2 flex-col sm:flex-row">
+         {/*  <div className="flex justify-center items-center space-x-2 flex-col sm:flex-row">
             <p className="my-2 font-medium">Connected Address:</p>
             <Address address={connectedAddress} />
           </div>
-
+ */}
           <p className="text-center text-lg">
             Get started by connecting a wallet{" "}
             <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
@@ -34,12 +34,13 @@ const Home: NextPage = () => {
           <div className="flex justify-center items-center gap-12 flex-col sm:flex-row">
             <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
               <p>
-                Learn about Wallets
+                <a href="https://metamask.io/">Learn about Wallets </a>
               </p>
             </div>
             <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
               <p>
-                Learn about blockchain
+                <a href="https://support.metamask.io/more-web3/learn/how-does-metamask-connect-to-a-blockchain-network/">
+                How does a wallet connect to the blockchain network</a>
               </p>
             </div>
           </div>
