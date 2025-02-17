@@ -22,15 +22,15 @@ export const menuLinks: HeaderMenuLink[] = [
   },
 
   {
-    label: "Debug Contracts",
+    label: "Debug Contracts (local testing)",
     href: "/debug",
     icon: <BugAntIcon className="h-4 w-4" />,
   },
 
-    {
+    /* {
     label: "Hsien-Hsiu's Portfolio Projects --->",
     href: "/portfolio",
-  },
+  }, */
   {
     label: "Multi-sig Wallet",
     href: "/multisigwallet",
