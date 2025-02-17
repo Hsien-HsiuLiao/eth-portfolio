@@ -1,3 +1,4 @@
+import MultiSigWalletApp from "./_components/MultiSigWalletApp";
 import type { NextPage } from "next";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
@@ -20,6 +21,7 @@ const Portfolio: NextPage = () => {
           </code>{" "}
         </p>
       </div>
+      <MultiSigWalletApp />
     </>
   );
 };
