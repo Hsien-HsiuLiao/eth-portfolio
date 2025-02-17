@@ -42,6 +42,17 @@ async function main() {
   console.log(receipt);
 
   console.log('Contract deployed to:', receipt.options.address);
+
+  const data = {
+      //https://web3js.readthedocs.io/en/v1.3.0/web3-eth-contract.html?highlight=address#id16
+      address: receipt.options.address,
+      //https://web3js.readthedocs.io/en/v1.3.0/web3-eth-contract.html?highlight=address#options-jsoninterface
+      abi: /* JSON.parse( */receipt.options.jsonInterface/* .format('json') )*/
+      ///abi: JSON.parse(rawContract)
+    };
+  
+  
+    fs.writeFileSync('Walletweb3.json', JSON.stringify(data));
 }
 
 main()
