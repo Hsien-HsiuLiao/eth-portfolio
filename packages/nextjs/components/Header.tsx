@@ -32,7 +32,7 @@ export const menuLinks: HeaderMenuLink[] = [
     href: "/portfolio",
   }, */
   {
-    label: "Multi-sig Wallet",
+    label: "Multi-Sig Wallet",
     href: "/multisigwallet",
   },
   {
