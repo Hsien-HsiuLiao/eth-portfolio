@@ -5,7 +5,7 @@ import {
   mintNFT,
 } from "./util/interact.js";
 
-const Minter = (props) => {
+const CheckWallet = (props) => {
   const [walletAddress, setWallet] = useState("");
   const [status, setStatus] = useState("");
 
@@ -13,12 +13,15 @@ const Minter = (props) => {
   const [description, setDescription] = useState("");
   const [url, setURL] = useState("");
 
-  useEffect(async () => {
-    const { address, status } = await getCurrentWalletConnected();
+  useEffect( () => {
 
-    setWallet(address);
-    setStatus(status);
-
+    const fetchWalletData = async () => {
+      const { address, status } = await getCurrentWalletConnected();
+      setWallet(address);
+      setStatus(status);
+    };
+  
+    fetchWalletData();
     addWalletListener();
   }, []);
 
@@ -53,7 +56,7 @@ const Minter = (props) => {
     setWallet(walletResponse.address);
   };
 
-  const onMintPressed = async () => {
+  /* const onMintPressed = async () => {
     const { success, status } = await mintNFT(url, name, description);
     setStatus(status);
     if (success) {
@@ -61,7 +64,7 @@ const Minter = (props) => {
       setDescription("");
       setURL("");
     }
-  };
+  }; */
 
   return (
     <div className="Minter">
@@ -77,7 +80,7 @@ const Minter = (props) => {
       </button>
 
       <br></br>
-      <h1 id="title">🧙‍♂️ Alchemy NFT Minter</h1>
+     {/*  <h1 id="title">🧙‍♂️ Alchemy NFT Minter</h1>
       <p>
         Simply add your asset's link, name, and description, then press "Mint."
       </p>
@@ -103,7 +106,7 @@ const Minter = (props) => {
       </form>
       <button id="mintButton" onClick={onMintPressed}>
         Mint NFT
-      </button>
+      </button> */}
       <p id="status" style={{ color: "red" }}>
         {status}
       </p>
@@ -111,4 +114,4 @@ const Minter = (props) => {
   );
 };
 
-export default Minter;
+export default CheckWallet;
