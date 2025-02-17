@@ -1,6 +1,7 @@
 import { DebugContracts } from "./_components/DebugContracts";
 import type { NextPage } from "next";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
+import  ScaffoldETH2  from "./_components/ScaffoldETH2";
 
 export const metadata = getMetadata({
   title: "Debug Contracts",
@@ -10,6 +11,7 @@ export const metadata = getMetadata({
 const Debug: NextPage = () => {
   return (
     <>
+      <ScaffoldETH2 />
       <DebugContracts />
       <div className="text-center mt-8 bg-secondary p-10">
         <h1 className="text-4xl my-0">Debug Contracts</h1>
