@@ -28,7 +28,7 @@ export const menuLinks: HeaderMenuLink[] = [
   },
 
     {
-    label: "Hsien-Hsiu's Portfolio Projects ->",
+    label: "Hsien-Hsiu's Portfolio Projects --->",
     href: "/portfolio",
   },
   {
@@ -41,7 +41,7 @@ export const menuLinks: HeaderMenuLink[] = [
   },
   {
     label: "E-commerce",
-    href: "/ecomm",
+    href: "/ecommerce",
   },
   {
     label: "Musician dApp",
