@@ -2,11 +2,12 @@
 
 import React, { useEffect, useState } from 'react';
 import { getWeb3, getWallet } from './utils.js';
-/* import Header from './Header.js';
+import Header from './Header.js';
 import NewTransfer from './NewTransfer.js';
-import TransferList from './TransferList.js'; */
+import TransferList from './TransferList.js';
 /* import ProgressBar from 'react-bootstrap/ProgressBar';
  */
+
 
 
 function MultiSigWalletApp() {
@@ -42,6 +43,7 @@ function MultiSigWalletApp() {
     init();
     
   }, []);
+
 
     const createTransfer = async (transfer) => {
         await wallet.methods
@@ -82,9 +84,9 @@ function MultiSigWalletApp() {
 
   return (
     <div style={appStyle}>
-    {/*   <Header approvers={approvers} quorum={quorum} currentAccount={accounts}/> */}
-    {/*   <NewTransfer createTransfer={createTransfer} /> */}
-     {/*   <TransferList transfers={transfers} approveTransfer={approveTransfer} />  */}
+      <Header approvers={approvers} quorum={quorum} currentAccount={accounts} />
+      <NewTransfer createTransfer={createTransfer} />
+       <TransferList transfers={transfers} approveTransfer={approveTransfer} /> 
     </div>
   );
 }
