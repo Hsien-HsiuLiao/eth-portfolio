@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import getBlockchain from './ethereum.js';
 import axios from 'axios';
+import CheckWallet from './CheckWallet.js';
+import Minter from './Minter.js';
 
 function NftApp() {
   const [tokenMetadata, setTokenMetadata] = useState(undefined);
@@ -40,6 +42,8 @@ function NftApp() {
   if (typeof tokenMetadata === 'undefined') {
     return (
       <div style={{  textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
+        <CheckWallet />
+      {/*   <Minter /> */}
         <h3>Getting token info...</h3>
         <p>install MetaMask <a href="https://metamask.io/"> https://metamask.io/</a></p>
         <button onClick={handleClick}>Connect MetaMask to the dapp</button>
@@ -51,7 +55,7 @@ function NftApp() {
 
   return (
     <div style={{  textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
-
+      
       <div className='container'>
         <div className='row'>
           <div className='col-sm-12'>
