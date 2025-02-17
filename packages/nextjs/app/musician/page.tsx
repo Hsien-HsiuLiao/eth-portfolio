@@ -14,7 +14,7 @@ const Portfolio: NextPage = () => {
         <h1 className="text-4xl my-0">Portfolio</h1>
         <p className="text-neutral">
           Musician dApp
-          <br /> Check{" "}
+          <br /> {" "}
           <code className="italic bg-base-300 text-base font-bold [word-spacing:-0.5rem] px-1">
           <a href="https://github.com/Hsien-HsiuLiao/Buy-Music-with-Ethereum-dApp">Github</a>
           </code>{" "}
