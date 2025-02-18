@@ -79,7 +79,10 @@ const Minter = (props) => {
       <br></br>
       <h1 id="title">🧙‍♂️ Alchemy NFT Minter</h1>
       <p>
-        Simply add your asset's link, name, and description, then press "Mint."
+      {/* Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`. react/no-unescaped-entities
+82:73 Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`. react/no-unescaped-entities
+82:79 Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`. react/no-unescaped-entities */}
+        Simply add your {/* asset's link, name, and description, then press "Mint." */}
       </p>
       <form>
         <h2>🖼 Link to asset: </h2>
