@@ -26,6 +26,7 @@ async function main() {
   const account2 = web3.eth.accounts.privateKeyToAccount(PRIVATE_KEY2);
   const account3 = web3.eth.accounts.privateKeyToAccount(PRIVATE_KEY3);
 
+  //used to quickly generate accounts and keys https://vanity-eth.tk/
   web3.eth.accounts.wallet.add(account);
   web3.eth.accounts.wallet.add(account2);
   web3.eth.accounts.wallet.add(account3);
