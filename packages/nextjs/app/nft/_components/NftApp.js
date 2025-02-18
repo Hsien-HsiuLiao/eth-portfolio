@@ -43,11 +43,13 @@ function NftApp() {
   };
 
 const fetchWalletData = async () => {
+          console.log("fetchwallet");
+
       const {  status } = await getCurrentWalletConnected();
       setWalletStatus(status);
     };
   
-    fetchWalletData();
+  //  fetchWalletData();
     //console.log("CheckWallet.status",CheckWallet.status);
 
   if (walletStatus === 'Connected' && typeof tokenMetadata === 'undefined') {
