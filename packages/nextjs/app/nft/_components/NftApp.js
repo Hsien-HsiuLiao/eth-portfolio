@@ -27,7 +27,7 @@ function NftApp() {
     init();
   }, []); */
 
-  const handleClick = async () => {
+  const getNFT = async () => {
     console.log('Button clicked!');
     const { nft } = await getBlockchain();
     console.log("nft", nft.address);
@@ -42,18 +42,9 @@ function NftApp() {
     setNftAddress(nft.address);
   };
 
-const fetchWalletData = async () => {
-          console.log("fetchwallet");
-
-      const {  status } = await getCurrentWalletConnected();
-      setWalletStatus(status);
-    };
-  
-  //  fetchWalletData();
-    //console.log("CheckWallet.status",CheckWallet.status);
 
   if (walletStatus === 'Connected' && typeof tokenMetadata === 'undefined') {
-    handleClick();
+    getNFT();
   }
 
 
@@ -62,15 +53,18 @@ const fetchWalletData = async () => {
     console.log("updateStatus", newStatus, walletStatus);
   };
 
-  if (typeof tokenMetadata === 'undefined') {
+  if (walletStatus !== 'Connected' && typeof tokenMetadata === 'undefined') {
     return (
       <div style={{  textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
         <CheckWallet getWalletStatus={updateStatus}/>
       {/*   <Minter /> */}
-        <h3>Getting token info...</h3>
-        <p>install MetaMask <a href="https://metamask.io/"> https://metamask.io/</a></p>
-        <button onClick={handleClick}>Connect MetaMask to the dapp</button>
-        <p>Connect Metamask to the testnet to display the NFT</p>
+        <h3>About</h3>
+        <p>This app will get the token URI from the NFT smart contract, 
+          then get the metadata from IPFS using the URI
+          and display the result in the browser
+          once the Metamask wallet is installed and connected
+        </p>
+        <p>Start by connecting Metamask to the Sepolia testnet to display the NFT</p>
       </div>
     );
   }
