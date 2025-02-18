@@ -3,10 +3,17 @@
 import React, { useState } from 'react';
 import getBlockchain from './ethereum.js';
 import axios from 'axios';
+import CheckWallet from './CheckWallet.js';
+import Minter from './Minter.js';
+import {
+  connectWallet,
+  getCurrentWalletConnected,
+} from "./util/interact.js";
 
 function NftApp() {
   const [tokenMetadata, setTokenMetadata] = useState(undefined);
   const [nftAddress, setNftAddress] = useState(undefined);
+  const [walletStatus, setWalletStatus] = useState(undefined);
 
 
   /* useEffect( () => {
@@ -35,23 +42,40 @@ function NftApp() {
     setNftAddress(nft.address);
   };
 
+const fetchWalletData = async () => {
+      const {  status } = await getCurrentWalletConnected();
+      setWalletStatus(status);
+    };
+  
+    fetchWalletData();
+    //console.log("CheckWallet.status",CheckWallet.status);
 
+  if (walletStatus === 'Connected' && typeof tokenMetadata === 'undefined') {
+    handleClick();
+  }
+
+
+  const updateStatus = (newStatus) => {
+    setWalletStatus(newStatus);
+    console.log("updateStatus", newStatus, walletStatus);
+  };
 
   if (typeof tokenMetadata === 'undefined') {
     return (
       <div style={{  textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
+        <CheckWallet getWalletStatus={updateStatus}/>
+      {/*   <Minter /> */}
         <h3>Getting token info...</h3>
         <p>install MetaMask <a href="https://metamask.io/"> https://metamask.io/</a></p>
         <button onClick={handleClick}>Connect MetaMask to the dapp</button>
         <p>Connect Metamask to the testnet to display the NFT</p>
-        <p>Get test eth sepolia <a href="https://www.alchemy.com/faucets/ethereum-sepolia">faucet</a></p>
       </div>
     );
   }
 
   return (
     <div style={{  textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
-
+      
       <div className='container'>
         <div className='row'>
           <div className='col-sm-12'>
