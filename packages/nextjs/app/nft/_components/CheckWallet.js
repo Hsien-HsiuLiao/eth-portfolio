@@ -5,7 +5,7 @@ import {
   mintNFT,
 } from "./util/interact.js";
 
-const CheckWallet = (props) => {
+const CheckWallet = (/* props */{getWalletStatus}) => {
   const [walletAddress, setWallet] = useState("");
   const [status, setStatus] = useState("");
 
@@ -19,18 +19,26 @@ const CheckWallet = (props) => {
       const { address, status } = await getCurrentWalletConnected();
       setWallet(address);
       setStatus(status);
+      
     };
   
     fetchWalletData();
     addWalletListener();
+    
+
   }, []);
 
   function addWalletListener() {
+    console.log("addWalletListener",status)
+
     if (window.ethereum) {
       window.ethereum.on("accountsChanged", (accounts) => {
         if (accounts.length > 0) {
           setWallet(accounts[0]);
-          setStatus("👆🏽 Write a message in the text-field above.");
+          setStatus("Connected");
+          console.log("accountsChanged status", status)
+          console.log("getWalletStatus",status)
+    getWalletStatus(status);
         } else {
           setWallet("");
           setStatus("🦊 Connect to Metamask using the top right button.");
