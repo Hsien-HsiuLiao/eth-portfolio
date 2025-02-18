@@ -13,7 +13,7 @@ export const connectWallet = async () => {
         method: "eth_requestAccounts",
       });
       const obj = {
-        status: "👆🏽 Write a message in the text-field above.",
+        status: "👆🏽 Write a message in the text-field above. connectWallet called",
         address: addressArray[0],
       };
       return obj;
@@ -52,7 +52,7 @@ export const getCurrentWalletConnected = async () => {
       if (addressArray.length > 0) {
         return {
           address: addressArray[0],
-          status: "👆🏽 Write a message in the text-field above.",
+          status: "Connected",
         };
       } else {
         return {
