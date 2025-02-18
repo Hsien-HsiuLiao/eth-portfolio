@@ -89,7 +89,7 @@ export const getCurrentWalletConnected = async () => {
   return new web3.eth.Contract(contractABI, contractAddress);
 } */
 
-/* export const mintNFT = async (url, name, description) => {
+export const mintNFT = async (url, name, description) => {
   if (url.trim() == "" || name.trim() == "" || description.trim() == "") {
     return {
       success: false,
@@ -139,4 +139,4 @@ export const getCurrentWalletConnected = async () => {
       status: "😥 Something went wrong: " + error.message,
     };
   }
-}; */
+};
