@@ -51,7 +51,7 @@ const CheckWallet = (/* props */{getWalletStatus}) => {
           🦊{" "}
           <a target="_blank" href={`https://metamask.io/download.html`}>
             You must install Metamask, a virtual Ethereum wallet, in your
-            browser.
+            browser. Click to download
           </a>
         </p>
       );
@@ -76,7 +76,7 @@ const CheckWallet = (/* props */{getWalletStatus}) => {
 
   return (
     <div className="Minter">
-      <button id="walletButton" onClick={connectWalletPressed}>
+      {/* <button id="walletButton" onClick={connectWalletPressed}>
         {walletAddress.length > 0 ? (
           "Connected: " +
           String(walletAddress).substring(0, 6) +
@@ -85,7 +85,7 @@ const CheckWallet = (/* props */{getWalletStatus}) => {
         ) : (
           <span>Connect Wallet</span>
         )}
-      </button>
+      </button> */}
 
       <br></br>
      {/*  <h1 id="title">🧙‍♂️ Alchemy NFT Minter</h1>
