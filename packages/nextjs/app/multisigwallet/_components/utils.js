@@ -5,6 +5,8 @@ const getWeb3 = () => {
     console.log('getweb3:');
     
     return new Promise((resolve, reject) => {
+        console.log('addEventListener:');
+
         window.addEventListener('load', async () => {
 
         console.log('window.ethereum:', window.ethereum )
