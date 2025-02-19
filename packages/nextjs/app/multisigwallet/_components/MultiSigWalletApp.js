@@ -16,7 +16,7 @@ function MultiSigWalletApp() {
 
   
   const [web3, setWeb3] = useState(undefined);
-  const [accounts, setAccounts] = useState(undefined);
+  const [account, setAccounts] = useState(undefined);
   const [wallet, setWallet] = useState(undefined);
   const [approvers, setApprovers] = useState([]);
   const [quorum, setQuorum] = useState(undefined);
@@ -29,18 +29,21 @@ function MultiSigWalletApp() {
     const init = async () => {
       const web3 = await getWeb3(); //getWeb3() has become async function
       const accounts = await web3.eth.getAccounts();
+      const [account] = accounts; //destructure account from accounts array 
       const wallet = await getWallet(web3);
       const approvers = await wallet.methods.getApprovers().call();
       const quorum = await wallet.methods.quorum().call();
       const transfers = await wallet.methods.getTransfers().call();
       setWeb3(web3);
-      setAccounts(accounts);
+      setAccounts(account);
       setWallet(wallet);
       setApprovers(approvers);
       setQuorum(quorum);
       setTransfers(transfers);
       window.ethereum.on('accountsChanged', function(accounts) {
-        setAccounts(accounts);
+        const [account] = accounts; //destructure account from accounts array 
+
+        setAccounts(account);
         });
         
     };
@@ -78,7 +81,7 @@ function MultiSigWalletApp() {
 
   if(
     typeof web3 === 'undefined'
-    || typeof accounts === 'undefined'
+    || typeof account === 'undefined'
     || typeof wallet === 'undefined'
     || approvers.length === 0
     || typeof quorum === 'undefined'
@@ -94,7 +97,7 @@ function MultiSigWalletApp() {
 
   return (
     <div style={appStyle}>
-      <Header approvers={approvers} quorum={quorum} currentAccount={accounts} />
+      <Header approvers={approvers} quorum={quorum} currentAccount={account} />
       <NewTransfer createTransfer={createTransfer} />
        <TransferList transfers={transfers} approveTransfer={approveTransfer} /> 
     </div>
