@@ -41,7 +41,9 @@ function MultiSigWalletApp() {
       setQuorum(quorum);
       setTransfers(transfers);
       window.ethereum.on('accountsChanged', function(accounts) {
-        setAccounts(accounts);
+        const [account] = accounts; //destructure account from accounts array 
+
+        setAccounts(account);
         });
         
     };
