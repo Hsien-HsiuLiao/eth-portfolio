@@ -7,6 +7,8 @@ import NewTransfer from './NewTransfer.js';
 import TransferList from './TransferList.js';
 /* import ProgressBar from 'react-bootstrap/ProgressBar';
  */
+import CheckWallet from './CheckWallet.js';
+
 
 
 
@@ -19,6 +21,8 @@ function MultiSigWalletApp() {
   const [approvers, setApprovers] = useState([]);
   const [quorum, setQuorum] = useState(undefined);
   const [transfers, setTransfers] = useState([]);
+  const [walletStatus, setWalletStatus] = useState(undefined);
+  
   
 
   useEffect(() => {
@@ -42,7 +46,7 @@ function MultiSigWalletApp() {
     };
     init();
     
-  }, []);
+  }, [walletStatus]);
 
 
     const createTransfer = async (transfer) => {
@@ -67,6 +71,11 @@ function MultiSigWalletApp() {
     newtransfers();
   }
 
+  const updateStatus = (newStatus) => {
+    setWalletStatus(newStatus);
+    console.log("updateStatus", newStatus, walletStatus);
+  };
+
   if(
     typeof web3 === 'undefined'
     || typeof accounts === 'undefined'
@@ -78,6 +87,7 @@ function MultiSigWalletApp() {
       <div>
             Loading...
           {/*   <ProgressBar animated now={45} /> */}
+          <CheckWallet getWalletStatus={updateStatus}/>
       </div>
       );
   }
