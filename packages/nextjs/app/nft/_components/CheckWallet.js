@@ -24,9 +24,11 @@ const CheckWallet = (/* props */{getWalletStatus}) => {
   
     fetchWalletData();
     addWalletListener();
+    console.log("useEffect status", status)
+
     
 
-  }, []);
+  }, [status]);
 
   function addWalletListener() {
     console.log("addWalletListener",status)
