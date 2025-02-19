@@ -24,9 +24,12 @@ const CheckWallet = (/* props */{getWalletStatus}) => {
   
     fetchWalletData();
     addWalletListener();
+    console.log("useEffect status", status)
+    console.log("getWalletStatus",status)
+    getWalletStatus(status);
     
 
-  }, []);
+  }, [status]);
 
   function addWalletListener() {
     console.log("addWalletListener",status)
@@ -37,8 +40,7 @@ const CheckWallet = (/* props */{getWalletStatus}) => {
           setWallet(accounts[0]);
           setStatus("Connected");
           console.log("accountsChanged status", status)
-          console.log("getWalletStatus",status)
-    getWalletStatus(status);
+          
         } else {
           setWallet("");
           setStatus("🦊 Connect to Metamask using the top right button.");
