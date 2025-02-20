@@ -34,7 +34,7 @@ import NFTcontract from './contracts/NFT.json';
        */
         if (window.ethereum) {
           try {
-            await window.ethereum.enable();
+           // await window.ethereum.enable(); //pop up metamask
             //const provider = new ethers.providers.Web3Provider(window.ethereum);
             const provider = new ethers.providers.Web3Provider(process.env.INFURA_URL);
             const signer = provider.getSigner();
