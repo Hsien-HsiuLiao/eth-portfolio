@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { ethers, Contract } from "ethers";
 import NFTcontract from './contracts/NFT.json';
 
