@@ -57,8 +57,8 @@ function NftApp() {
   if (/* walletStatus !== 'Connected' || */ typeof tokenMetadata === 'undefined') {
     return (
       <div style={{  textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
-        <CheckWallet getWalletStatus={updateStatus}/>
-        <h3>About</h3>
+{/*         <CheckWallet getWalletStatus={updateStatus}/>
+ */}        <h3>About</h3>
         <p>This app will get the token URI from the NFT smart contract, 
           then get the metadata from IPFS using the URI
           and display the result in the browser
