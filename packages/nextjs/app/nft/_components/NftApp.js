@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import getBlockchain from './ethereum.js';
 import axios from 'axios';
 import CheckWallet from './CheckWallet.js';
