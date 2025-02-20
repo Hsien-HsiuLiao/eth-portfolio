@@ -38,14 +38,14 @@ import NFTcontract from './contracts/NFT.json';
            // await window.ethereum.enable(); //pop up metamask
             //const provider = new ethers.providers.Web3Provider(window.ethereum);
             const provider = new ethers.providers.InfuraProvider("sepolia", process.env.INFURA_API_KEY);
-            const signer = provider.getSigner();
+           // const signer = provider.getSigner();
       console.log("NFT", NFTcontract);
             const nft = new Contract(
               //  NFTcontract.networks[window.ethereum.networkVersion].address,
                 NFTcontract.address,
 
                 NFTcontract.abi,
-              signer
+              provider
             );
       
             return { nft };
