@@ -37,7 +37,7 @@ import NFTcontract from './contracts/NFT.json';
           try {
            // await window.ethereum.enable(); //pop up metamask
             //const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const provider = new ethers.providers.InfuraProvider("sepolia", process.env.INFURA_API_KEY);
+            const provider = new ethers.providers.InfuraProvider(11155111, process.env.INFURA_API_KEY);
            // const signer = provider.getSigner();
       console.log("NFT", NFTcontract);
             const nft = new Contract(
