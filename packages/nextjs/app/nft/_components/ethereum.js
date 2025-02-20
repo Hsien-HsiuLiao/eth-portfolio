@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { ethers, Contract } from "ethers";
 import NFTcontract from './contracts/NFT.json';
 
@@ -32,18 +33,19 @@ import NFTcontract from './contracts/NFT.json';
           await new Promise((resolve) => setTimeout(resolve, 100));
         }
        */
-        if (window.ethereum) {
+     
           try {
-            await window.ethereum.enable();
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            const signer = provider.getSigner();
+           // await window.ethereum.enable(); //pop up metamask
+            //const provider = new ethers.providers.Web3Provider(window.ethereum);
+            const provider = new ethers.providers.InfuraProvider("sepolia", process.env.INFURA_API_KEY);
+           // const signer = provider.getSigner();
       console.log("NFT", NFTcontract);
             const nft = new Contract(
               //  NFTcontract.networks[window.ethereum.networkVersion].address,
                 NFTcontract.address,
 
                 NFTcontract.abi,
-              signer
+              provider
             );
       
             return { nft };
@@ -51,9 +53,7 @@ import NFTcontract from './contracts/NFT.json';
             console.error("error connecting to blockchain", error);
             return { nft: undefined };
           }
-        }
-      
-        return { nft: undefined }; //another?
+       
       };
 
 export default getBlockchain;
