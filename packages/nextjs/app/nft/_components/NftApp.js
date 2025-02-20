@@ -54,7 +54,7 @@ function NftApp() {
     console.log("updateStatus", newStatus, walletStatus);
   };
 
-  /* if (walletStatus !== 'Connected' || typeof tokenMetadata === 'undefined') {
+  if (/* walletStatus !== 'Connected' || */ typeof tokenMetadata === 'undefined') {
     return (
       <div style={{  textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
         <CheckWallet getWalletStatus={updateStatus}/>
@@ -68,7 +68,7 @@ function NftApp() {
       </div>
     );
   }
- */
+
   
   return (
     <div style={{  textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
