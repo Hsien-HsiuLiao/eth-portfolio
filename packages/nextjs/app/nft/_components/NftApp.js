@@ -16,16 +16,17 @@ function NftApp() {
   const [walletStatus, setWalletStatus] = useState(undefined);
 
 
-  /* useEffect( () => {
-    const init = async () => {
+  useEffect( () => {
+    /* const init = async () => {
       const { nft } = await getBlockchain();
       const tokenURI = await nft.tokenURI(0); //tokenId = 0, nft.tokenURI(tokenId)
       const { data } = await axios.get(tokenURI); //https://gateway.pinata.cloud/ipfs/bafkreid43ipihuvs4a2gu46ekp4cqjlq3wee52vfp5sj2jbxqgcoj2tfem/
      // console.log(data.result.image);
       setTokenInfo(data.result);
     };
-    init();
-  }, []); */
+    init(); */
+    getNFT()
+  }, []);
 
   const getNFT = async () => {
     console.log('Button clicked!');
@@ -43,21 +44,20 @@ function NftApp() {
   };
 
 
-  if (walletStatus === 'Connected' && typeof tokenMetadata === 'undefined') {
+  /* if (walletStatus === 'Connected' && typeof tokenMetadata === 'undefined') {
     getNFT();
   }
-
+ */
 
   const updateStatus = (newStatus) => {
     setWalletStatus(newStatus);
     console.log("updateStatus", newStatus, walletStatus);
   };
 
-  if (walletStatus !== 'Connected' || typeof tokenMetadata === 'undefined') {
+  /* if (walletStatus !== 'Connected' || typeof tokenMetadata === 'undefined') {
     return (
       <div style={{  textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
         <CheckWallet getWalletStatus={updateStatus}/>
-      {/*   <Minter /> */}
         <h3>About</h3>
         <p>This app will get the token URI from the NFT smart contract, 
           then get the metadata from IPFS using the URI
@@ -68,7 +68,8 @@ function NftApp() {
       </div>
     );
   }
-
+ */
+  
   return (
     <div style={{  textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
       
@@ -84,6 +85,7 @@ function NftApp() {
           </div>
         </div>
       </div>
+      {/*   <Minter /> */}
       
     </div>
   );
