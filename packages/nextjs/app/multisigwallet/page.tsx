@@ -12,12 +12,12 @@ const Portfolio: NextPage = () => {
     <>
       
       <div className="text-center mt-8 bg-secondary p-10">
-        <h1 className="text-4xl my-0">Portfolio</h1>
+        <h1 className="text-4xl my-0">Multi-Signature Wallet</h1>
         <p className="text-neutral">
-          Multi-Signature Wallet
+          
           <br /> {" "}
           <code className="italic bg-base-300 text-base font-bold [word-spacing:-0.5rem] px-1">
-          <a href="https://github.com/Hsien-HsiuLiao/multisig-wallet">Github</a>
+        {/*   <a href="https://github.com/Hsien-HsiuLiao/multisig-wallet">Github</a> */}
           </code>{" "}
         </p>
       </div>
