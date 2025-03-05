@@ -9,11 +9,11 @@ function TransferList({transfers, approveTransfer}) {
             <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Amount</th>
-                        <th>To</th>
-                        <th>approvals</th>
-                        <th>sent</th>
+                        <th style={{ color: 'white' }}>Id</th>
+                        <th style={{ color: 'white' }}>Amount</th>
+                        <th style={{ color: 'white' }}>To</th>
+                        <th style={{ color: 'white' }}>Approvals</th>
+                        <th style={{ color: 'white' }}>Sent</th>
                     </tr>
                 </thead>
                 <tbody>
