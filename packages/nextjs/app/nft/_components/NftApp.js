@@ -71,9 +71,9 @@ function NftApp() {
 
   
   return (
-    <div style={{  textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
+    <div /* style={{  textAlign: 'center', alignItems: 'center', justifyContent: 'center'}} */>
       
-      <div className='container'>
+    {/*   <div className='container'>
         <div className='row'>
           <div className='col-sm-12'>
             <h1 className='text-center'>{tokenMetadata.name}</h1>
@@ -84,7 +84,28 @@ function NftApp() {
             </div>
           </div>
         </div>
+      </div> */}
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <div className='container text-center'>
+        <div className='row'>
+          <div className='col-sm-12'>
+            <h1>{tokenMetadata.name}</h1>
+            <div className="jumbotron">
+              <p className="lead">{tokenMetadata.description}</p>
+              <p>
+                (verify contract on etherscan) 
+                <a href={`https://sepolia.etherscan.io/address/${nftAddress}`} target="_blank" rel="noopener noreferrer">
+                  https://sepolia.etherscan.io/address/{nftAddress}
+                </a>
+              </p>
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <img src={tokenMetadata.image} className="img-fluid" alt="" style={{ maxWidth: '50%', height: 'auto' }} />
+                </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
       {/*   <Minter /> */}
       
     </div>
