@@ -20,8 +20,9 @@ const Portfolio: NextPage = () => {
         {/*   <a href="https://github.com/Hsien-HsiuLiao/multisig-wallet">Github</a> */}
           </code>{" "}
         </p>
+              <MultiSigWalletApp />
+
       </div>
-      <MultiSigWalletApp />
     </>
   );
 };
