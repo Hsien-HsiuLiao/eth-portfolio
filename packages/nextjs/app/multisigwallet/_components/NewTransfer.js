@@ -36,8 +36,8 @@ function NewTransfer({createTransfer}) {
 
 
     return (
-        <div style ={newTrasferStyle}>
-            <h2>Create Transfer</h2>
+        <div style ={newTransferStyle}>
+            <h2 style={{ fontSize: '24px', margin: '0' }}>Create Transfer</h2>
             <form onSubmit={(e) => submit(e)}>
                 <label htmlFor="amount"> Amount (in Wei): </label>
                 <input
@@ -67,7 +67,7 @@ function NewTransfer({createTransfer}) {
     )
 };
 
-const newTrasferStyle = {
+const newTransferStyle = {
     background: '#333',
     color: '#fff',
     padding: '10px'
