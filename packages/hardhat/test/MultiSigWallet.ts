@@ -45,11 +45,11 @@ describe('Wallet', function () {
         const transfers = await wallet.getTransfers();
 
         expect(transfers.length).to.equal(1);
-        expect(transfers[0].id).to.equal(0);
-        expect(transfers[0].amount).to.equal(100);
-        expect(transfers[0].to).to.equal(recipient);
-        expect(transfers[0].approvals).to.equal(0);
-        expect(transfers[0].sent).to.equal(false);
+        expect(transfers[transferId].id).to.equal(0);
+        expect(transfers[transferId].amount).to.equal(100);
+        expect(transfers[transferId].to).to.equal(recipient);
+        expect(transfers[transferId].approvals).to.equal(0);
+        expect(transfers[transferId].sent).to.equal(false);
     });
 
     it('should NOT create transfers if sender is not approved', async function () {
@@ -77,11 +77,11 @@ describe('Wallet', function () {
     });
 
     it('should send transfer if quorum reached', async function () {
-        const balanceBefore = await ethers.provider.getBalance(await accounts[6].getAddress());
+        const balanceBefore = await ethers.provider.getBalance(recipient);
 
         // Create a transfer
         const walletWithSigner0 = wallet.connect(accounts[0]); // Connect to account[0]
-        await walletWithSigner0.createTransfer(100, await accounts[6].getAddress());
+        await walletWithSigner0.createTransfer(100, recipient);
 
         // Approve the transfer
         await walletWithSigner0.approveTransfer(transferId); // Approve from account[0]
@@ -89,7 +89,7 @@ describe('Wallet', function () {
         const walletWithSigner1 = wallet.connect(accounts[1]); // Connect to account[1]
         await walletWithSigner1.approveTransfer(transferId); // Approve from account[1]
 
-        const balanceAfter = await ethers.provider.getBalance(await accounts[6].getAddress());
+        const balanceAfter = await ethers.provider.getBalance(recipient);
 
         // Assertions
         expect(balanceAfter - balanceBefore).to.equal(100);
@@ -107,7 +107,7 @@ describe('Wallet', function () {
     it('should NOT approve transfer if transfer is already sent', async function () {
         // Create a transfer
         const walletWithSigner0 = wallet.connect(accounts[0]); // Connect to account[0]
-        await walletWithSigner0.createTransfer(100, await accounts[6].getAddress());
+        await walletWithSigner0.createTransfer(100, recipient);
 
         // Approve the transfer from account[0]
         await walletWithSigner0.approveTransfer(transferId);
@@ -123,7 +123,7 @@ describe('Wallet', function () {
 
 
     it('should NOT approve transfer twice', async function () {
-        await wallet.createTransfer(100, await accounts[6].getAddress(), { from: await accounts[0].getAddress() });
+        await wallet.createTransfer(100, recipient, { from: await accounts[0].getAddress() });
         await wallet.approveTransfer(transferId, { from: await accounts[0].getAddress() });
         await expect(wallet.approveTransfer(transferId, { from: await accounts[0].getAddress() }))
             .to.be.revertedWith('cannot approve transfer twice');
