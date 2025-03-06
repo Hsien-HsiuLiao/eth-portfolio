@@ -64,11 +64,11 @@ const config: HardhatUserConfig = {
       accounts: [deployerPrivateKey],
     },
     sepolia: {
-      /* url: `https://eth-sepolia.g.alchemy.com/v2/${providerApiKey}`,
-      accounts: [deployerPrivateKey], */
+      url: `https://eth-sepolia.g.alchemy.com/v2/${providerApiKey}`,
+      accounts: [deployerPrivateKey],
       
-        url: API_URL,
-        accounts: [`0x${PRIVATE_KEY}`],
+       /*  url: API_URL,
+        accounts: [`0x${PRIVATE_KEY}`], */
       
     },
     arbitrum: {
