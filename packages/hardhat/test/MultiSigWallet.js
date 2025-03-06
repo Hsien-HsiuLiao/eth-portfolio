@@ -53,16 +53,18 @@ describe('Wallet', function () {
         // Create a transfer
         const walletWithSigner = wallet.connect(accounts[0]); // Connect the wallet to the sender's account
         await walletWithSigner.createTransfer(100, accounts[5].address);
-    
+
         // Approve the transfer
         await walletWithSigner.approveTransfer(0);
-    
+            //    console.log("retrive a transfer");
+
         // Retrieve transfers and balance
         const transfers = await wallet.getTransfers();
-        const balance = await ethers.provider.getBalance(wallet.address);
+       //         console.log("wallet.address", await wallet.getAddress());
+
+        const balance = await ethers.provider.getBalance(await wallet.getAddress());
     
         // Debugging logs
-        console.log(transfers);
         console.log(balance.toString());
     
         // Assertions
@@ -86,9 +88,12 @@ describe('Wallet', function () {
         await walletWithSigner1.approveTransfer(0); // Approve from account[1]
     
         const balanceAfter = await ethers.provider.getBalance(accounts[6].address);
-    
+        
+        console.log( typeof balanceAfter);
         // Assertions
-        expect(balanceAfter.sub(balanceBefore).toString()).to.equal(100);
+       // expect(balanceAfter.sub(balanceBefore).toString()).to.equal(100);
+               expect(balanceAfter - balanceBefore).to.equal(100);
+
     });
     
 
