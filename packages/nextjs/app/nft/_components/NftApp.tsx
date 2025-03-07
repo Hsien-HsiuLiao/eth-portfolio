@@ -1,60 +1,29 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import getBlockchain from './ethereum';
-import axios from 'axios';
-import CheckWallet from './CheckWallet';
-import Minter from './Minter';
-import {
-  connectWallet,
-  getCurrentWalletConnected,
-} from "./util/interact";
+import { fetchNftMetadata, TokenMetadata } from './nftModel';
 
-interface TokenMetadata {
-  name: string;
-  description: string;
-  image: string;
-}
-
-interface NftCollection {
-  [key: string]: TokenMetadata; // This allows for dynamic keys like "0", "1", etc.
-}
-
-
-function NftApp() {
+const NftApp: React.FC = () => {
   const [tokenMetadata, setTokenMetadata] = useState<TokenMetadata | undefined>(undefined);
   const [nftAddress, setNftAddress] = useState<string | undefined>(undefined);
   const [walletStatus, setWalletStatus] = useState<string | undefined>(undefined);
 
   useEffect(() => {
+    const getNFT = async () => {
+      const NFTdata = await fetchNftMetadata(0); // Fetch metadata for token ID 0
+      setTokenMetadata(NFTdata?.metadata);
+      setNftAddress(NFTdata?.address); 
+    };
+
     getNFT();
   }, []);
-
-  const getNFT = async () => {
-    console.log('Button clicked!');
-    const { nft } = await getBlockchain();
-    if (!nft) {
-      console.error("NFT contract is not defined");
-      return; // Exit the function if nft is undefined
-    }
-    console.log("nft", nft.address);
-    const tokenId = 0;
-    const tokenURI = await nft.tokenURI(tokenId);
-    console.log(tokenURI);
-    const { data } = await axios.get(tokenURI);
-    console.log(data);
-    const metaData: NftCollection = data; // Assuming the data structure matches TokenMetadata
-  //  console.log(metaData[tokenId]);
-    setTokenMetadata(metaData[tokenId]);
- //   console.log(tokenMetadata);
-    setNftAddress(nft.address);
-  };
 
   const updateStatus = (newStatus: string) => {
     setWalletStatus(newStatus);
     console.log("updateStatus", newStatus, walletStatus);
   };
 
+  // View Logic
   if (typeof tokenMetadata === 'undefined') {
     return (
       <div style={{ textAlign: 'center', alignItems: 'center', justifyContent: 'center' }}>
@@ -94,6 +63,6 @@ function NftApp() {
       </div>
     </div>
   );
-}
+};
 
 export default NftApp;
