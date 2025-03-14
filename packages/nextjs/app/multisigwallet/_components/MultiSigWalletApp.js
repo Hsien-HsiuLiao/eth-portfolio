@@ -49,7 +49,7 @@ function MultiSigWalletApp() {
     };
     init();
     
-  }, [walletStatus]);
+  }, [/* walletStatus */]);
 
 
     const createTransfer = async (transfer) => {
