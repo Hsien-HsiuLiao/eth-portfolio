@@ -28,7 +28,7 @@ const CheckWallet = (/* props */{getWalletStatus}) => {
     getWalletStatus(status);
     
 
-  }, [status]);
+  }, [/* status */]);
 
   function addWalletListener() {
     console.log("addWalletListener",status)

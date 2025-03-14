@@ -49,25 +49,27 @@ function MultiSigWalletApp() {
     };
     init();
     
-  }, [walletStatus]);
+  }, [/* walletStatus */]);
 
 
     const createTransfer = async (transfer) => {
         await wallet.methods
           .createTransfer(transfer.amount, transfer.to)
-          .send({from: accounts[0]});
+          .send({from: account});
         setTransfers(await wallet.methods.getTransfers().call());    
   }
 
   const approveTransfer = (transferId, transferApprovals) => {
     const newtransfers = async () => {
       const refreshAccounts = await web3.eth.getAccounts();
-      setAccounts(refreshAccounts);
+      const [account] = refreshAccounts; //destructure account from accounts array 
+
+      setAccounts(account);
      
      
       await wallet.methods
               .approveTransfer(transferId)
-              .send({from: refreshAccounts[0]});
+              .send({from: account});
       const updatedTransfer = await wallet.methods.getTransfers().call();
       setTransfers(updatedTransfer);
     };
